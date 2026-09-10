@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth:sanctum')->group(function () {
+// Route::middleware('auth:sanctum')->group(function () {
 
-    Route::get('/profile', function(){});
-    Route::post('/products', function(){});
+//     Route::get('/profile', function(){});
+//     Route::post('/products', function(){});
 
-});
+// });
 
 Route::get('/admin/posts/example',array('as'=>'admin.home',function(){
     $url = route('admin.home');
-    return 'this url is'.$url;
+    return 'this url is' .$url;
 }));
+
+
+Route::get('/tests/{id}','testController@index');
+
+
+Route::resource('posts', 'PostController');
