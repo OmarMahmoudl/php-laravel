@@ -35,3 +35,7 @@ Route::get('/tests/{id}','testController@index');
 
 
 Route::resource('posts', 'PostController');
+
+Route::get('/contact','PostController@contact');
+
+
