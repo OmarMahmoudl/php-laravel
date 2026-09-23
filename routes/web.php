@@ -36,7 +36,13 @@ Route::get('/tests/{id}','testController@index');
 
 Route::resource('posts', 'PostController');
 
+<<<<<<< HEAD
 // Route::get('/contact','PostController@contact');
 Route::get('/contact', function () {
     return view('contact');
 });
+=======
+Route::get('/contact','PostController@contact');
+
+
+>>>>>>> origin/main
