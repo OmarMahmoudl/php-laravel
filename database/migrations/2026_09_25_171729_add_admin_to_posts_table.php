@@ -14,7 +14,7 @@ class AddAdminToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('admin');
+            $table->integer('is_admin');
         });
     }
 

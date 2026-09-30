@@ -88,16 +88,11 @@ class PostController extends Controller
         //
     }
 
-<<<<<<< HEAD
+
     public function contact (){
         $name = 'moooooo';
         $title = 'contact us';
         return view('contact',compact('name','title'));
     }
 };
-=======
-    public function contact(){
-        return view('contact');
-    }
-}
->>>>>>> origin/main
+

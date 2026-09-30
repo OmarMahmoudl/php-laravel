@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Type\Integer;
 
-class CreateZanoonTable extends Migration
+class CreateUsersRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +14,10 @@ class CreateZanoonTable extends Migration
      */
     public function up()
     {
-        Schema::create('zanon', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->id();
+            $table ->Integer("user_id");
+            $table ->Integer("role_id");
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateZanoonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zanon');
+        Schema::dropIfExists('role_user');
     }
 }

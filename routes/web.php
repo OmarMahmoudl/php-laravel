@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\testController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,39 +37,42 @@ Route::get('/', function () {
 
 // Route::resource('posts', 'PostController');
 
-// // Route::get('/contact','PostController@contact');
+// Route::get('/contact','PostController@contact');
+
+
 // Route::get('/contact', function () {
 //     return view('contact');
 // });
+
+
 // use Illuminate\Support\Facades\DB;
 // Route::get('/insert', function () {
 //     DB::insert(
 //         'insert into posts (title, body, user_id, omar, admin) values (?, ?, ?, ?, ?)',
-//         ['php with laravel', 'my content', 1, 'omar', 0]
+//         ['php with laravel', 'my content', 100, 'ahmed gamal', 101]
 //     );
-
+// 
 //     return 'inserted';
 // });
 
-
-
-use App\Post;
-
-// Route::get('/posts', function () {
-
-//     // كل الـ posts
+use App\Post;   
+use App\User;
+//
+//   Route::get('/posts', function () {
+// 
+//    // كل الـ posts
 //     $posts = Post::all();
-
-//     foreach ($posts as $post) {
-//         echo $post->title;
-//     }
-
-//   $posts = Post::where('id',2)->get()->orderBy('id','desc');
+// 
+//    foreach ($posts as $post) {
+//        echo $post->title;
+//    }
+// 
+//    $posts = Post::orderBy('id', 'desc')->get();
 //   return $posts;
-
-// // $posts = Post::where('count','<','100')->first();
-// return $posts;
 // });
+
+
+
 // Route::get('/basicinsert5', function () {
 //     $post = new Post;
 //     $post->title = 'Eloquent title insert5';
@@ -77,29 +81,75 @@ use App\Post;
 //     $post->omar = 'elmowafy';
 //     $post->admin = 5;
 //     $post->save();
+//     return $post;
+// });
+//
+// Route::get('/basicupdate20', function () {
+// $post = Post::find(1);
+// $post->body = 'Eloquent is really cool20';
+// $post->save();
+// return 'Post updated';
+// });
+//
+// Route::get('/create', function () {
+//    $post = Post::create([
+    //    'title' => 'new post',
+    //    'body' => 'new body',
+    //    'user_id' => 33,
+    //    'omar' => 'elmowafy',
+    //    'admin' => 1,
+//    ]);
+//    return 'ok';
+// });
 
+//Post::where("id",1)->where('admin',0)->update([
+//    'title' => 'Eloquent title update2',
+//    'body'=>'Eloquent is really cool update2',
+//]);
+
+
+// Route::get('delete', function () {
+//     $post = Post::find(27);
+//     $post = Post::find(23);
+//     $post = Post::find(22);
+//     $post = Post::find(1);
+//     $post->delete();
+//     return 'deleted';
+// });
+
+// Route::get('/trashed', function () {
+//     $post = Post::withTrashed()
+//     ->where('id', 1)
+//     ->get();
 //     return $post;
 // });
 
-//  Route::get('/basicupdate20', function () {
-//  $post = Post::find(1);
-//  $post->body = 'Eloquent is really cool20';
-//  $post->save();
-//  return 'Post updated';
-//  });
 
-Route::get('/create', function () {
-    $post = Post::create([
-        'title' => 'Eloquent title insert',
-        'body' => 'im learning form edwineducation',
-        'user_id' => 2,
-        'omar' => 'elmowafy',
-        'admin' => 0,
-    ]);
-    return 'ok';
+// Route::get('/user/{id}/post', function ($id) {
+// $user = user::find($id);
+// return $user->post;
+// });
+
+// Route::get('/posts',function(){
+//     $user =User::find(1);
+    
+//     foreach($user->posts as $post){
+//     echo $post->title . "<br>" ;
+//     }
+// });
+
+
+// Route::get('user/{id}/role',function($id){
+//     $user = User::find($id);
+//     foreach($user->roles as $role){
+//         return $role->name;
+//     }
+// });
+
+
+Route::get('user/pivot',function(){
+    $user = User::find(1);
+    foreach($user->roles as $role){
+        return $role->pivot->created_at;
+    }
 });
-
-Post::where("id",1)->where('admin',0)->update([
-    'title' => 'Eloquent title update2',
-    'body'=>'Eloquent is really cool update2',
-]);
