@@ -38,17 +38,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function post()
-    {
-        return $this->hasOne('App\Post');
-    }
+    // public function post()
+    // {
+    //     return $this->hasOne('App\Post');
+    // }
 
-    public function posts(){
-        return $this->HasMany('App\Post');
-    }
+    // public function posts(){
+    //     return $this->HasMany('App\Post');
+    // }
 
-    public function roles(){
-        return $this->belongsToMany('App\Role')->withPivot('created_at');
-        // return $this->belongsToMany('App\Role',"user_role","user_id","role_id");
+    // public function roles(){
+    //     return $this->belongsToMany('App\Role')->withPivot('created_at');
+    //     // return $this->belongsToMany('App\Role',"user_role","user_id","role_id");
+    // }
+
+    public function photos(){
+        return $this->morphMany("App\Photo",'imageable');
     }
 }

@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use SoftDeletes;
-    protected $dates = ['deleted_at'];
-    protected $fillable = ["title","body","user_id","omar","admin"];
+    // protected $dates = ['deleted_at'];
+    protected $fillable = ["title","content","is_admin"];
+
+    public function photos(){
+        return $this->morphMany("App\Photo",'imageable');
+    }
     
 }

@@ -55,8 +55,10 @@ Route::get('/', function () {
 //     return 'inserted';
 // });
 
-use App\Post;   
 use App\User;
+use App\Post;       
+use App\Country;
+use App\Photo;
 //
 //   Route::get('/posts', function () {
 // 
@@ -147,9 +149,24 @@ use App\User;
 // });
 
 
-Route::get('user/pivot',function(){
-    $user = User::find(1);
-    foreach($user->roles as $role){
-        return $role->pivot->created_at;
-    }
+// Route::get('user/pivot',function(){
+//     $user = User::find(1);
+//     foreach($user->roles as $role){
+//         return $role->pivot->created_at;
+//     }
+// });
+
+// Route::get("/user/country",function(){
+//     $country = Country::find(2);
+//     foreach($country->posts as $post){
+//         return $post->title;
+//     }
+// });
+
+
+Route::get("/user/photos",function(){
+$user = User::find(1);
+foreach($user->photos as $photo){
+    return $photo->path;
+}
 });
