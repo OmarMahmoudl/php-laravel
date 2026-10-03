@@ -4,8 +4,9 @@
 
 
 
-<!-- <form method="post" action="/posts"> -->
-    {!! Form::open() !!}
+<!-- <form method="POST" action="/posts"> -->
+{!! Form::open(['method' => 'POST', 'action' => 'PostController@store']) !!} 
+
     @csrf
     <input type="text" name="title" placeholder="Enter Your Title">
     <input type="text" name="content" placeholder="Enter content">
@@ -15,3 +16,7 @@
 <!-- </form> -->
 
 @endsection
+
+
+
+{!! Form::open([''])!!}
