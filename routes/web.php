@@ -58,6 +58,7 @@ Route::get('/', function () {
 use App\User;
 use App\Post;       
 use App\Country;
+use App\Http\Controllers\PostController;
 use App\Photo;
 //
 //   Route::get('/posts', function () {
@@ -108,6 +109,45 @@ use App\Photo;
 //    'title' => 'Eloquent title update2',
 //    'body'=>'Eloquent is really cool update2',
 //]);
+
+
+
+
+
+// CRUD APP 
+
+Route::resource('/posts','PostController')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Route::get('delete', function () {
@@ -164,9 +204,11 @@ use App\Photo;
 // });
 
 
-Route::get("/user/photos",function(){
-$user = User::find(1);
-foreach($user->photos as $photo){
-    return $photo->path;
-}
-});
+// Route::get("/user/photos",function(){
+// $user = User::find(1);
+// foreach($user->photos as $photo){
+//     return $photo->path;
+// }
+// });
+
+;
