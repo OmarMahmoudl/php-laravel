@@ -10,7 +10,7 @@
     </nav>
 
    <div class="container">
-   @yield('formContact')
+   @yield('content')
    </div>
 
     <footer>
