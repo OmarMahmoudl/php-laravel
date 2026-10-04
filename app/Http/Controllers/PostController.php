@@ -42,9 +42,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // return 'store is tamam';
-        // return $request->all();
+        $this->validate($request,[
+            'title'=>'required|max:10',
+            'content'=>'required'
+        ]);
         Post::create($request->all());
         return redirect('/posts');
     }

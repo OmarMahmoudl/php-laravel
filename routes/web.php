@@ -116,12 +116,11 @@ use App\Photo;
 
 // CRUD APP 
 
-Route::resource('/posts','PostController')
+Route::group(['middleware' => 'web'], function(){
 
+Route::resource('/posts','PostController');
 
-
-
-
+});
 
 
 
