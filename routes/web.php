@@ -60,6 +60,8 @@ use App\Post;
 use App\Country;
 use App\Http\Controllers\PostController;
 use App\Photo;
+use Carbon\Carbon;
+
 //
 //   Route::get('/posts', function () {
 // 
@@ -120,13 +122,20 @@ Route::group(['middleware' => 'web'], function(){
 
 Route::resource('/posts','PostController');
 
+Route::get('/dates',function(){
+    $date = new DateTime('+1 week');
+    echo $date->format('m-d-y'); 
+    echo   "<br>";
+    echo Carbon::now()->addDays(3)->diffForHumans();
 });
 
-
-
-
-
-
+});
+Route::get('/setname',function(){
+    $user = User::first();
+    $user->name = 'William';
+    $user->save();
+    echo $user->name;
+});
 
 
 

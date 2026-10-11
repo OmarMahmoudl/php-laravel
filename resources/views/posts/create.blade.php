@@ -4,11 +4,12 @@
 
 
 
-{!! Form::open(['method' => 'POST', 'action' => 'PostController@store']) !!}
+{!! Form::open(['method' => 'POST', 'action' => 'PostController@store','files' => true]) !!}
     {!! Form::text('title', null, ['placeholder' => 'Enter Your Title']) !!}
     {!! Form::text('content', null, ['placeholder' => 'Enter content']) !!}
     {!! Form::number('user_id', null, ['placeholder' => 'User id']) !!}
     {!! Form::number('is_admin', null, ['placeholder' => '0 or 1']) !!}
+    {!! Form::file('file',['class' => 'form-control','required' => 'required']) !!}
     {!! Form::submit('submit') !!}
 {!! Form::close() !!}
 
